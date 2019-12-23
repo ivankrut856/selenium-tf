@@ -32,11 +32,14 @@ public class IssueCreationForm {
 
         waitUntilElement(driver, By.id("id_l.D.ni.ei.eit.summary"));
         var summaryText = driver.findElement(By.id("id_l.D.ni.ei.eit.summary"));
+        summaryText.clear();
         summaryText.sendKeys(info.getSummary());
 
         waitUntilElement(driver, By.id("id_l.D.ni.ei.eit.description"));
         var descriptionText = driver.findElement(By.id("id_l.D.ni.ei.eit.description"));
+        descriptionText.clear();
         descriptionText.sendKeys(info.getDescription());
+
 
         waitUntilElement(driver, By.id("id_l.D.ni.ei.submitButton_74_0"));
         var submitButton = driver.findElement(By.id("id_l.D.ni.ei.submitButton_74_0"));

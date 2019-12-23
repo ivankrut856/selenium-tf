@@ -23,10 +23,21 @@ public class IssuesPage {
         enterButton.click();
     }
 
+    public int getIssuesCount() {
+        waitUntilFullLoad(driver);
+        waitUntilElement(driver, By.className("issuesFound"));
+        if (driver.findElement(By.className("issuesFound")).getText().equals("No issues found."))
+            return 0;
+        waitUntilElement(driver, By.className("borderNoneHover"));
+        var countDiv = driver.findElement(By.className("borderNoneHover"));
+        var count = Integer.parseInt(countDiv.getText().split(" ")[1]);
+        return count;
+    }
+
     public IssueInfo getIssueInfo() {
         waitUntilFullLoad(driver);
-        waitUntilElement(driver, By.className("issue-summary"));
-        var lastIssue = driver.findElement(By.className("issue-summary"));
+        waitUntilElement(driver, By.className("issueIdAnchor"));
+        var lastIssue = driver.findElement(By.className("issueIdAnchor"));
         lastIssue.click();
 
         waitUntilFullLoad(driver);
